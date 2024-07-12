@@ -1,0 +1,70 @@
+<!-- src/app/components/employee-form/employee-form.component.html -->
+<div class="container mx-auto my-5 p-8 bg-gray-200 rounded-lg shadow-md">
+  <h2 class="text-2xl mb-6 text-center">Formulario de Empleado</h2>
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    <div>
+      <label for="name" class="block mb-2">Nombre:</label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        class="w-full p-2 border border-gray-300 rounded"
+      >
+      <div *ngIf="controlHasError('name', 'required')" class="text-red-500">
+        El nombre es requerido.
+      </div>
+    </div>
+    <div>
+      <label for="hourlyWage" class="block mb-2">Salario por Hora:</label>
+      <input
+        id="hourlyWage"
+        type="number"
+        formControlName="hourlyWage"
+        class="w-full p-2 border border-gray-300 rounded"
+      >
+      <div *ngIf="controlHasError('hourlyWage', 'required')" class="text-red-500">
+        El salario por hora es requerido.
+      </div>
+      <div *ngIf="controlHasError('hourlyWage', 'min')" class="text-red-500">
+        El salario por hora debe ser mayor o igual a 0.
+      </div>
+    </div>
+    <div>
+      <label for="hoursWorked" class="block mb-2">Horas Trabajadas:</label>
+      <input
+        id="hoursWorked"
+        type="number"
+        formControlName="hoursWorked"
+        class="w-full p-2 border border-gray-300 rounded"
+      >
+      <div *ngIf="controlHasError('hoursWorked', 'required')" class="text-red-500">
+        Las horas trabajadas son requeridas.
+      </div>
+      <div *ngIf="controlHasError('hoursWorked', 'min')" class="text-red-500">
+        Las horas trabajadas deben ser mayor o igual a 0.
+      </div>
+    </div>
+    <div>
+      <label for="overtimeHours" class="block mb-2">Horas Extras Trabajadas:</label>
+      <input
+        id="overtimeHours"
+        type="number"
+        formControlName="overtimeHours"
+        class="w-full p-2 border border-gray-300 rounded"
+      >
+      <div *ngIf="controlHasError('overtimeHours', 'required')" class="text-red-500">
+        Las horas extras trabajadas son requeridas.
+      </div>
+      <div *ngIf="controlHasError('overtimeHours', 'min')" class="text-red-500">
+        Las horas extras trabajadas deben ser mayor o igual a 0.
+      </div>
+    </div>
+    <button
+      type="submit"
+      class="w-full py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700"
+      [disabled]="employeeForm.invalid"
+    >
+      Agregar Empleado
+    </button>
+  </form>
+</div>
