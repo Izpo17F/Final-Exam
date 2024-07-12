@@ -27,7 +27,7 @@ export class EmployeeFormComponent {
   onSubmit() {
     if (this.employeeForm.valid) {
       const newEmployee: Employee = this.employeeForm.value;
-      this.employeeService.addEmployee(newEmployee);
+      this.employeeService.addEmployeeResult(newEmployee);
       this.employeeForm.reset();
     }
   }
