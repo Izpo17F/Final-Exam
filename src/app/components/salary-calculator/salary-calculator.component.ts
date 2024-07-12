@@ -1,8 +1,10 @@
+import { EmployeeResult } from '../../models/Employee-Result.interface';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Employee } from '../../models/Employee.interface';
 
 @Component({
   selector: 'app-salary-calculator',
@@ -11,7 +13,7 @@ import { CommonModule } from '@angular/common';
   imports: [ReactiveFormsModule, CommonModule],
 })
 export class SalaryCalculatorComponent implements OnInit {
-  employees: Employee[] = [];
+  employees: EmployeeResult[] = [];
   salaryForm: FormGroup;
   regularSalary: number | null = null;
   extraSalary: number | null = null;
@@ -23,7 +25,7 @@ export class SalaryCalculatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.employees = this.employeeService.getEmployees();
+    this.employees = this.employeeService.getEmployeeResults();
   }
 
   controlHasError(control: string, error: string) {
@@ -36,8 +38,8 @@ export class SalaryCalculatorComponent implements OnInit {
       const employee = this.employees.find(emp => emp.id === employeeId);
 
       if (employee) {
-        this.regularSalary = employee.salarioPorHora * employee.horasTrabajadas;
-        this.extraSalary = this.regularSalary + (employee.salarioPorHora * 1.5 * employee.horasExtrasTrabajadas);
+        this.regularSalary = employee.hourlyWage * employee.hoursWorked;
+        this.extraSalary = this.regularSalary + ((employee.hourlyWage + employee.hourlyWage* 1.5) * employee.overtimeHours);
       }
     }
   }

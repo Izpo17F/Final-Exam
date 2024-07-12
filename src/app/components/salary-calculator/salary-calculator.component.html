@@ -4,7 +4,7 @@
     <div>
       <label for="employeeId" class="block mb-2">Seleccione un Empleado:</label>
       <select id="employeeId" formControlName="employeeId" class="w-full p-2 border border-gray-300 rounded">
-        <option *ngFor="let employee of employees" [value]="employee.id">{{ employee.nombre }}</option>
+        <option *ngFor="let employee of employees" [value]="employee.id">{{ employee.name }}</option>
       </select>
       <div *ngIf="controlHasError('employeeId', 'required')" class="text-red-500">Debe seleccionar un empleado.</div>
     </div>
