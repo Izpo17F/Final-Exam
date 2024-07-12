@@ -5,5 +5,5 @@ import { SalaryCalculatorComponent } from './components/salary-calculator/salary
 
 export const routes: Routes = [
   { path: '', component: EmployeeFormComponent },
-  { path: '', component:SalaryCalculatorComponent }
+  { path: 'salary', component:SalaryCalculatorComponent }
 ];
